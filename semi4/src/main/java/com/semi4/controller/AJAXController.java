@@ -12,23 +12,23 @@ public class AJAXController {
 	@RequestMapping("checkid")
 	public String checkid(String id) {
 
-		System.out.println("aa");
 		String result = "";
 		CustVO c = null;
 
-		System.out.println("이클립스 테스트");
+		return result;
+	}
+	
+	@RequestMapping("mainAddCart")
+	public String mainAddCart(String id) {
 
-
-		System.out.println("bae modified");		
-
-		System.out.println("kang");
-
-
-
+		System.out.println("mainAddCart");
+		String result = "";
+		CustVO c = null;
 
 
 		return result;
 	}
+	
 	
 	
 	

@@ -1,6 +1,4 @@
-package com.semi4.product;
-
-import java.util.List;
+package com.semi4.main;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,26 +8,22 @@ import com.semi4.biz.ProductBiz;
 import com.semi4.vo.ProductVO;
 
 @SpringBootTest
-class SelectAllProductTest {
+class InsertProductTest {
 	
 	@Autowired
 	ProductBiz biz;
+
 	@Test
-	
 	void contextLoads() {
-		System.out.println("g한글출력");
-		List<ProductVO> list = null;
+		ProductVO obj = new ProductVO(42,"title","writer","pub",300,1,12,"img1.jpg","img2.jpg","img3.jpg");
 		try {
-			list = biz.get();
+			biz.register(obj);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		for (ProductVO vo : list) {
-			System.out.println(vo);
-			
-		}
 	}
+	//INSERT INTO PRODUCT VALUES (NULL,#{cid},#{title},#{writer},#{pub},#{price},
+	//		#{status},#{adult},#{img1},#{img2},#{img3})
 	
 }

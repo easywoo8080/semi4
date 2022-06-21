@@ -26,10 +26,7 @@ public class ProductVO {
 	private String img1;
 	private String img2;
 	private String name;
-	
-	
-	
-	
+
 	
 	public ProductVO(int pid, String name, String title, String writer, String pub, int price, int status, Date date, int adult,
 			String img0, String img1, String img2) {

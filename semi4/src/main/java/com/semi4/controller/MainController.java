@@ -1,5 +1,7 @@
 package com.semi4.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,16 +10,34 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.semi4.biz.CustBiz;
+import com.semi4.biz.MainBiz;
 import com.semi4.vo.CustVO;
+import com.semi4.vo.ProductVO;
 
 @Controller
 public class MainController {
 	
 	@Autowired
 	CustBiz custbiz;
+	
+	@Autowired
+	MainBiz mainbiz;
+	
+	String path = "테스트입니다. 여긴 컨트롤러";
 
 	@RequestMapping("/")
 	public String main(Model m) {
+		List<ProductVO> plist = null;
+		try {
+			plist = mainbiz.get();
+			System.out.println("77777777777777777777"+plist.size());
+			m.addAttribute("plist", plist);
+			m.addAttribute("path", path);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		return "main";
 	}
 	

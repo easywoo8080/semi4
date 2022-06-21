@@ -18,26 +18,27 @@ import com.semi4.vo.CustVO;
 public class CartController {
 	@Autowired
 	CartBiz biz;
-	
-	@RequestMapping("/center")
+
+	@RequestMapping("")
 	public String center(Model m, HttpSession session) {
 		List<CartVO> list = null;
 		List<CustVO> clist = null;
 		try {
-			
+
 			clist = (List<CustVO>) session.getAttribute("logincust");
 			if (clist != null) {
-				list=biz.getID(clist.get(0).getUid());
+				list = biz.getID(clist.get(0).getUid());
 				m.addAttribute("cartlist", list);
-			}else {
-				
+			} else {
+
 			}
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		return "/center";
+
+		m.addAttribute("center", "cart/center");
+		return "main";
 	}
 }
 

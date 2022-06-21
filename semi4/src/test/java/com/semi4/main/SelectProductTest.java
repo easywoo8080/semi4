@@ -1,6 +1,4 @@
-package com.semi4.product;
-
-import java.util.List;
+package com.semi4.main;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,26 +8,21 @@ import com.semi4.biz.ProductBiz;
 import com.semi4.vo.ProductVO;
 
 @SpringBootTest
-class SelectAllProductTest {
+class SelectProductTest {
 	
 	@Autowired
 	ProductBiz biz;
 	@Test
-	
 	void contextLoads() {
-		System.out.println("g한글출력");
-		List<ProductVO> list = null;
+		ProductVO obj = null;
 		try {
-			list = biz.get();
+			obj = biz.get(4);
+			System.out.println(obj);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		for (ProductVO vo : list) {
-			System.out.println(vo);
-			
-		}
+		//System.out.println(biz.get(19));
 	}
 	
 }
