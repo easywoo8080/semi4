@@ -1,12 +1,46 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Cart title here</title>
-</head>
-<body>
-<h1> Cart  Center</h1>
 
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">Cart</h1>
+<p class="mb-4"></p>
 
-</body>
-</html>
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Cart Table</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Image</th>
+                        <th>User</th>
+                        <th>PID</th>
+                        <th>Title</th>
+                        <th>Price</th>
+                        <th>CNT</th>
+                        <th>writer</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    <tr th:each="cr : ${cartlist}">
+                    <!-- /cust/detail?id=id01 -->
+                        <td th:text="${cr.cartid}"></td>
+                        <td><img th:src="@{'/img/product_img/'+${cr.img1}}"></td>
+                        <td th:text="${cr.uid}"></td>
+                        <td th:text="${cr.pid}"></td>
+                        <td th:text="${cr.title}"></td>
+                        <td th:text="${cr.price}"></td>
+                        <td th:text="${cr.num}"></td>
+                        <td th:text="${cr.writer}"></td>
+                        <td th:text="${cr.status}"></td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -3,23 +3,26 @@ package com.semi4.biz;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.semi4.frame.Biz;
+import com.semi4.mapper.CateMapper;
 import com.semi4.mapper.ProductMapper;
-import com.semi4.vo.ProductVO;
+import com.semi4.vo.CateVO;
 
-public class CateBiz implements Biz<Integer, ProductVO> {
+@Service
+public class CateBiz implements Biz<Integer, CateVO> {
 
 	@Autowired
-	ProductMapper dao;
+	CateMapper dao;
 	
 	@Override
-	public void register(ProductVO v) throws Exception {
+	public void register(CateVO v) throws Exception {
 		dao.insert(v);
 	}
 
 	@Override
-	public void modify(ProductVO v) throws Exception {
+	public void modify(CateVO v) throws Exception {
 		dao.update(v);
 	}
 
@@ -29,12 +32,12 @@ public class CateBiz implements Biz<Integer, ProductVO> {
 	}
 
 	@Override
-	public ProductVO get(Integer k) throws Exception {
+	public CateVO get(Integer k) throws Exception {
 		return dao.select(k);
 	}
 
 	@Override
-	public List<ProductVO> get() throws Exception {
+	public List<CateVO> get() throws Exception {
 		return dao.selectall();
 	}
 
