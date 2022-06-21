@@ -10,7 +10,7 @@ import com.semi4.mapper.ProductMapper;
 import com.semi4.vo.ProductVO;
 
 @Service
-public class ProductBiz implements Biz<Integer, ProductVO> {
+public class MainBiz implements Biz<Integer, ProductVO> {
 
 	@Autowired
 	ProductMapper dao;

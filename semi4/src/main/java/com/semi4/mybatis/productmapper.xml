@@ -6,8 +6,6 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="selectall" resultType="productVO">
 		SELECT * FROM product;
 	</select>
-	
-	
 </mapper>
 
 
