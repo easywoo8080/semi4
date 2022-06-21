@@ -4,16 +4,30 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 
 @Getter
 @Setter
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 public class CateVO {
 	private int cid;
 	private String name;
-	private int id;
+	private int cateid;
+	
+	public CateVO(int cid, String name) {
+		this.cid = cid;
+		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return "CateVO [cid=" + cid + ", name=" + name + ", cateid=" + cateid + "]";
+	}
+	
+	
+	
+
+	
+	
 }
