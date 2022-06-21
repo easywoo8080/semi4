@@ -3,41 +3,48 @@ package com.semi4.biz;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.semi4.frame.Biz;
-import com.semi4.mapper.ProductMapper;
-import com.semi4.vo.ProductVO;
+import com.semi4.mapper.CartMapper;
+import com.semi4.vo.CartVO;
 
-public class CartBiz implements Biz<Integer, ProductVO> {
-
+@Service
+public class CartBiz implements Biz<Integer, CartVO> {
 	@Autowired
-	ProductMapper dao;
-	
+	CartMapper dao;
+
 	@Override
-	public void register(ProductVO v) throws Exception {
+	public void register(CartVO v) throws Exception {
 		dao.insert(v);
+		
 	}
 
 	@Override
-	public void modify(ProductVO v) throws Exception {
+	public void modify(CartVO v) throws Exception {
 		dao.update(v);
+		
 	}
 
 	@Override
 	public void remove(Integer k) throws Exception {
 		dao.delete(k);
+		
 	}
 
 	@Override
-	public ProductVO get(Integer k) throws Exception {
+	public CartVO get(Integer k) throws Exception {
 		return dao.select(k);
 	}
 
 	@Override
-	public List<ProductVO> get() throws Exception {
+	public List<CartVO> get() throws Exception {
 		return dao.selectall();
 	}
-
-
-
+	
+	public List<CartVO> getID(String uid) throws Exception {
+			return dao.selectID(uid);
+	
+	}
+	
 }
