@@ -12,9 +12,9 @@ import com.semi4.vo.CateVO;
 @Mapper
 public interface CateMapper {
 
-	public void insert(CartVO obj) throws Exception;
+	public void insert(CateVO obj) throws Exception;
 	public void delete(int obj) throws Exception;
-	public void update(CartVO obj) throws Exception;
+	public void update(CateVO obj) throws Exception;
 	public CateVO select(int obj) throws Exception;
-	public List<CartVO> selectall() throws Exception;
+	public List<CateVO> selectall() throws Exception;
 }

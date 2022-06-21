@@ -3,11 +3,13 @@ package com.semi4.biz;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.semi4.frame.Biz;
 import com.semi4.mapper.ProductMapper;
 import com.semi4.vo.ProductVO;
 
+@Service
 public class ProductBiz implements Biz<Integer, ProductVO> {
 
 	@Autowired
