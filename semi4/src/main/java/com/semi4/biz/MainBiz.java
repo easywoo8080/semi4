@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.semi4.frame.Biz;
 import com.semi4.mapper.MainMapper;
+import com.semi4.vo.CartVO;
 import com.semi4.vo.ProductVO;
 
 @Service
@@ -40,7 +41,5 @@ public class MainBiz implements Biz<Integer, ProductVO> {
 	public List<ProductVO> get() throws Exception {
 		return dao.selectall();
 	}
-
-
 
 }

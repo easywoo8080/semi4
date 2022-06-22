@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.semi4.biz.CartBiz;
 import com.semi4.biz.CustBiz;
+import com.semi4.vo.CartVO;
 import com.semi4.vo.CustVO;
 
 @RestController
@@ -45,28 +46,33 @@ public class AJAXController {
 	@RequestMapping("mainAddCart")
 	public String mainAddCart(String id, HttpSession session) {
 		String result = "";
-		System.out.println("id : " + id);
-		
-		
-		if( session == null ) {
-			System.out.println("세션이 널이니다.");
-		} else {
+//		
+//		System.out.println("id : " + id);
+//		if( session == null ) {
+//			result = "0";
+//		} else {
 //			CustVO cust;
-//			
 //			cust = (CustVO) session.getAttribute("logincust");
-//			CartVO c = new CartVO(cust.getUid(), id, 1);
+//			
+//			
+//			
+//			CartVO c = new CartVO(cust.getUid(), Integer.parseInt(id), 1);
 //			
 //			try {
+//				cartbiz.getID(id);
+//				
 //				cartbiz.register(c);
 //				
 //				System.out.println("Registered OK");
 //			} catch (Exception e) {
 //				e.printStackTrace();
 //			}
-		}
-		
+//			result = "1";
+//		}
+//		
 		return result;
 	}
+
 
 }
 
