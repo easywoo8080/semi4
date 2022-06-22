@@ -1,44 +1,61 @@
 package com.semi4.controller;
 
+
+import javax.servlet.http.HttpSession;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.semi4.biz.CartBiz;
+import com.semi4.vo.CartVO;
+
+import com.semi4.biz.CustBiz;
 
 import com.semi4.vo.CustVO;
 
 @RestController
 public class AJAXController {
 
+
+	@Autowired
+	CartBiz cartbiz;
 	
 	@RequestMapping("checkid")
 	public String checkid(String id) {
 
-		System.out.println("aa");
 		String result = "";
 		CustVO c = null;
-
-		System.out.println("이클립스 테스트");
-
-
-		System.out.println("bae modified");		
-
-		System.out.println("kang");
-
-
-
-
 
 		return result;
 	}
 	
-	
-	
+	@RequestMapping("mainAddCart")
+	public String mainAddCart(String id, HttpSession session) {
+		String result = "";
+		System.out.println("id : " + id);
+		
+		
+		if( session == null ) {
+			System.out.println("세션이 널이니다.");
+		} else {
+//			CustVO cust;
+//			
+//			cust = (CustVO) session.getAttribute("logincust");
+//			CartVO c = new CartVO(cust.getUid(), id, 1);
+//			
+//			try {
+//				cartbiz.register(c);
+//				
+//				System.out.println("Registered OK");
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+		}
+		
+		return result;
+	}
+
 }
-
-
-
-
-
-
-
-
 

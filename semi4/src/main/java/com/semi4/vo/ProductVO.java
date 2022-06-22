@@ -10,6 +10,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
+
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductVO {
@@ -25,11 +26,9 @@ public class ProductVO {
 	private String img0;
 	private String img1;
 	private String img2;
+
 	private String name;
-	
-	
-	
-	
+
 	
 	public ProductVO(int pid, String name, String title, String writer, String pub, int price, int status, Date date, int adult,
 			String img0, String img1, String img2) {
@@ -91,14 +90,13 @@ public class ProductVO {
 		this.img1 = img1;
 		this.img2 = img2;
 	}
+
 	@Override
 	public String toString() {
 		return "ProductVO [pid=" + pid + ", cid=" + cid + ", title=" + title + ", writer=" + writer + ", pub=" + pub
 				+ ", price=" + price + ", status=" + status + ", date=" + date + ", adult=" + adult + ", img0=" + img0
-				+ ", img1=" + img1 + ", img2=" + img2 + ", name=" + name + "]";
-	}
-	
-	
 
-	
+				+ ", img1=" + img1 + ", img2=" + img2 + "]";
+	}
+
 }

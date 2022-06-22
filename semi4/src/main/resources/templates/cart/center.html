@@ -1,5 +1,10 @@
 
 <!-- Page Heading -->
+<style>
+	td > img {
+		width: 50px;
+	}
+</style>
 <h1 class="h3 mb-2 text-gray-800">Cart</h1>
 <p class="mb-4"></p>
 
@@ -13,23 +18,23 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>No.</th>
+                        
                         <th>Image</th>
                         <th>User</th>
                         <th>PID</th>
                         <th>Title</th>
                         <th>Price</th>
                         <th>CNT</th>
-                        <th>writer</th>
+                        <th>Writer</th>
                         <th>Status</th>
                     </tr>
                 </thead>
                 
                 <tbody>
                     <tr th:each="cr : ${cartlist}">
-                    <!-- /cust/detail?id=id01 -->
-                        <td th:text="${cr.cartid}"></td>
-                        <td><img th:src="@{'/img/product_img/'+${cr.img1}}"></td>
+                   
+                      
+                        <td><img th:src="@{'/img/product_img/'+${cr.img0}}"></td>
                         <td th:text="${cr.uid}"></td>
                         <td th:text="${cr.pid}"></td>
                         <td th:text="${cr.title}"></td>
