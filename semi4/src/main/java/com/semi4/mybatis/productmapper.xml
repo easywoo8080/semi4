@@ -9,6 +9,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		inner join cate c ON c.cid = p.cid
 		 WHERE PID=#{pid}
 	</select>
+<<<<<<< HEAD
+=======
 	<select id="selectall" resultType="productVO">
 		select pid, c.name, title, writer, pub, price, status, date,adult, img0,img1,img2 from product p
 		inner join cate c ON c.cid = p.cid
@@ -25,6 +27,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		DELETE FROM PRODUCT WHERE PID=#{pid}
 	</delete>
 	
+>>>>>>> a5beba9e6d6aa1da6074245eaad3e164e3f34f4b
 </mapper>
 
 
