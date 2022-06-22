@@ -50,6 +50,7 @@ public class MainController {
 	public String logout(Model m, HttpSession session) {
 		if(session !=null) {
 			session.invalidate();
+			sesi
 		}
 		return "main";
 	}

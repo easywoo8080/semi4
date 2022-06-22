@@ -10,7 +10,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@AllArgsConstructor
+//@AllArgsConstructor
 @NoArgsConstructor
 public class CustVO {
 	private String uid;
@@ -19,6 +19,8 @@ public class CustVO {
 	private String addr;
 	private String phon;
 	private String birth;
+
+	
 	public CustVO(String uid, String pwd, String name, String addr, String phon, String birth) {
 		super();
 		this.uid = uid;
@@ -31,3 +33,5 @@ public class CustVO {
 	
 	
 }
+
+
