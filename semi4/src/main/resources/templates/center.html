@@ -5,22 +5,15 @@
 <title>Main title here</title>
 </head>
 <script>
-$.ajax({
-	url: "전송 페이지"(action url),
-	type: "전송 방식"(get, post),
-	success: function(data){
-		//전송에 성공하면 실행될 코드;
-	}
-});
+
 
 $(document).ready(function(){
-	alert("이옹");
-	$('#login_bt').click(function(){
-		$('#login_form').attr({
-			'method':'post',
-			'action':'/loginimpl' 
-		});
-		$('#login_form').submit();
+	$.ajax({
+		url: "mainAddCart",
+		type: "get",
+		success: function(data){
+
+		}
 	});
 });
 
@@ -43,8 +36,6 @@ $(document).ready(function(){
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
                 <div class="row gx-5 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                
-                
                     <div class="col mb-5" th:each="p:${plist}">
                         <div class="card h-100">
                             <!-- Product image-->
@@ -61,11 +52,10 @@ $(document).ready(function(){
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" th:value="${p.pid}">Add Cart</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" th:href="'mainAddCart?id='+${p.pid}" >Add Cart</a></div>
                             </div>
                         </div>
                     </div>
-  
                 </div>
             </div>
         </section>

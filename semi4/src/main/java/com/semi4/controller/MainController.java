@@ -30,7 +30,6 @@ public class MainController {
 		List<ProductVO> plist = null;
 		try {
 			plist = mainbiz.get();
-			System.out.println("77777777777777777777"+plist.size());
 			m.addAttribute("plist", plist);
 			m.addAttribute("path", path);
 		} catch (Exception e) {
