@@ -17,7 +17,7 @@ class CateInsertTest {
 
 	@Test
 	void contextLoads() {
-		CateVO obj = new CateVO(50, "etc1", 0);
+		CateVO obj = new CateVO(41, "dd",0);
 		try {
 			biz.register(obj);
 		} catch (Exception e) {
