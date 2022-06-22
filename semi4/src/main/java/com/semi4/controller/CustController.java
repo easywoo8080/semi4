@@ -1,6 +1,6 @@
 package com.semi4.controller;
 
-import java.util.List;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,60 +21,24 @@ public class CustController {
 	@RequestMapping("")
 	public ModelAndView main(ModelAndView mv) {
 		mv.setViewName("main");
-		mv.addObject("center", "cust/center" );
+		mv.addObject("center", "cust/add" );
 		return mv;
 	}
 
 	@RequestMapping("/add")
 	public String add(Model m) {
 		m.addAttribute("center", "cust/add");
-		return "main";		
+		return "main";
 	}
 	
 	@RequestMapping("/addimpl")
-	public String addimpl(Model m, CustVO obj) {
+	public String addimpl(Model m, CustVO cust, HttpSession session) {
 		try {
-			cbiz.register(obj);
+			cbiz.register(cust);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "redirect:detail?id="+obj.getUid();
-	}
-	
-	@RequestMapping("/select")
-	public String select(Model m) {
-		List<CustVO> list = null;
-		try {
-			list = cbiz.get();
-			m.addAttribute("clist", list);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		m.addAttribute("center", "cust/select");
-		return "main";
-	}
-	
-	@RequestMapping("/detail")
-	public String detail(Model m, String id) {
-		CustVO obj = null;
-		try {
-			obj  = cbiz.get(id);
-			m.addAttribute("c", obj);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		m.addAttribute("center", "cust/detail");
-		return "main";
-	}
-	
-	@RequestMapping("/update")
-	public String update(Model m, CustVO obj) {
-		try {
-			cbiz.modify(obj);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return "redirect:detail?id="+obj.getUid();
+		return "redirect:detail?uid="+cust.getUid();
 	}
 
 }
