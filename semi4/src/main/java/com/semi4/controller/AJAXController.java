@@ -8,21 +8,37 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.semi4.biz.CartBiz;
+import com.semi4.biz.CustBiz;
 import com.semi4.vo.CartVO;
 import com.semi4.vo.CustVO;
 
 @RestController
 public class AJAXController {
 
+	@Autowired
+	CustBiz custbiz;
 
 	@Autowired
 	CartBiz cartbiz;
 	
 	@RequestMapping("checkid")
 	public String checkid(String id) {
-
 		String result = "";
-		CustVO c = null;
+		CustVO cust = null;
+		
+		if(id.equals("") || id == null) {
+			return "1";
+		}
+		try {
+			cust = custbiz.get(id);
+			if(cust == null) {
+				result = "0";
+			}else {
+				result = "1";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		return result;
 	}

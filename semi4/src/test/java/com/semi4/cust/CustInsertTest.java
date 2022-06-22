@@ -15,7 +15,7 @@ class CustInsertTest {
 	
 	@Test
 	void contextLoads() {
-		CustVO cust = new CustVO("id03", "pwd03", "jeong", "newyork", "tel3", "1995");
+		CustVO cust = new CustVO("id06", "pwd06", "ki", "newyork", "tel6", "1996");
 		try {
 			cbiz.register(cust);
 			System.out.println("등록 완료되었습니다!");

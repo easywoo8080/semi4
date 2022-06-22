@@ -1,3 +1,4 @@
+<meta charset="UTF-8">
 <script>
 $(document).ready(function(){
 	$('#updatebtn').click(function(){
@@ -8,8 +9,8 @@ $(document).ready(function(){
 		$('.user').submit();
 	});
 });
-
 </script>
+<div class="container-fluid">
 <div class="col-lg-6">
     <div class="p-5">
         <div class="text-center">
@@ -18,39 +19,40 @@ $(document).ready(function(){
         <form class="user">
             <div class="form-group">
                 <input type="text" class="form-control form-control-user"
-                    name="uid" value="id01" th:value="${c.uid}" readonly="readonly">
+                    name="id" value="id01" th:value="${cust.uid}" readonly="readonly">
             </div>
             
             <div class="form-group">
                 <input type="text" class="form-control form-control-user"
-                    name="pwd" value="pwd01" th:value="${c.pwd}">
+                    name="pwd" value="pwd01" th:value="${cust.pwd}">
             </div>
             
             <div class="form-group">
                 <input type="text" class="form-control form-control-user"
-                    name="name" value="jeong" th:value="${c.name}">
+                    name="name" value="james" th:value="${cust.name}">
             </div>
             
             <div class="form-group">
                 <input type="text" class="form-control form-control-user"
-                    name="addr" value="seoul" th:value="${c.addr}">
+                    name="addr" value="seoul" th:value="${cust.addr}">
             </div>
             
             <div class="form-group">
                 <input type="text" class="form-control form-control-user"
-                    name="phone" value="tel1" th:value="#{c.phone}">
+                    name="phon" value="tel1" th:value="${cust.phon}">
             </div>
-                        
+            
             <div class="form-group">
                 <input type="text" class="form-control form-control-user"
-                    name="birth" value="1999" th:value="#{c.birth}">
+                    name="birth" value="1990" th:value="${cust.birth}">
             </div>
 
             <a id="updatebtn" href="#" class="btn btn-primary btn-user btn-block">
-                UPDATE
+                회원정보 수정
             </a>
             
         </form>
        
     </div>
+</div>
 </div>
