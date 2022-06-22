@@ -5,9 +5,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@AllArgsConstructor
+
 @Getter
 @Setter
+@AllArgsConstructor
 @NoArgsConstructor
 public class CateVO {
 	private int cid;
@@ -18,7 +19,6 @@ public class CateVO {
 		this.cid = cid;
 		this.name = name;
 	}
-
 
 	@Override
 	public String toString() {
