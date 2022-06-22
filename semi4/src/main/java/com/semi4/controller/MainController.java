@@ -59,6 +59,7 @@ public class MainController {
 		CustVO cust = null;
 		try {
 			cust = custbiz.get(id);
+			
 			if(cust == null) {
 				throw new Exception();
 			}

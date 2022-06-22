@@ -19,24 +19,17 @@ import com.semi4.vo.CustVO;
 public class CartController {
 	@Autowired
 	CartBiz biz;
-
+	CustBiz cbiz;
 
 	@RequestMapping("")
 	public String center(Model m, HttpSession session) {
 		List<CartVO> list = null;
+		CustVO cust = null;
 		try {
-			CustVO clist;
+			cust = (CustVO) session.getAttribute("logincust");
+			
 
-			clist = (CustVO) session.getAttribute("logincust");
-			if (clist != null) {
-				list = biz.getID(clist.getUid());
-				m.addAttribute("cartlist", list);
-			} else {
-
-			}
-
-
-			list= biz.getID("id01");
+			list= biz.getID(cust.getUid());
 			m.addAttribute("cartlist", list);
 
 		} catch (Exception e) {
@@ -50,26 +43,7 @@ public class CartController {
 
 	}
 	
-//	@RequestMapping("")
-//	public String center(Model m, HttpSession session) {
-//		List<CartVO> list = null;
-//		List<CustVO> clist = null;
-//		try {
-//			
-//			clist = (List<CustVO>) session.getAttribute("logincust");
-//			if (clist != null) {
-//				list=biz.getID(clist.get(0).getUid());
-//				m.addAttribute("cartlist", list);
-//			}else {
-//				
-//			}
-//			
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		m.addAttribute("center", "cart/center");
-//		return "main";
-//	}
+
 }
 
 

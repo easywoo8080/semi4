@@ -19,4 +19,8 @@ public class CustVO {
 	private String addr;
 	private String phon;
 	private String birth;
+	
+	
+	
+	
 }

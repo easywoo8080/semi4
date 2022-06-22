@@ -1,11 +1,18 @@
 package com.semi4.controller;
 
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.semi4.biz.CartBiz;
@@ -55,6 +62,20 @@ public class AJAXController {
 		}
 		
 		return result;
+	}
+	@RequestMapping(value="/deletecr", method=RequestMethod.POST)
+	@ResponseBody
+	public Object deleteCR(
+			@RequestParam(value="crlist[]") List<String> crlist
+			) {
+		for(String cart	: crlist) {
+			System.out.println(cart);
+		}
+		Map<String, Object> retVal = new HashMap<String, Object>();
+		retVal.put("code", "OK");
+		retVal.put("message", "삭제 완료");
+		
+		return retVal;
 	}
 
 }
