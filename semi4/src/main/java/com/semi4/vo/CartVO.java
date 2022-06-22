@@ -21,7 +21,7 @@ public class CartVO {
 	private int price;
 	private String writer;
 	private int status;
-	private String img0;
+	private String img1;
 	
 	public CartVO(int cartid, int num) {
 		super();
