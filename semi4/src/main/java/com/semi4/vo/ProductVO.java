@@ -6,11 +6,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 
 @Getter
 @Setter
-
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductVO {
@@ -91,12 +92,5 @@ public class ProductVO {
 		this.img2 = img2;
 	}
 
-	@Override
-	public String toString() {
-		return "ProductVO [pid=" + pid + ", cid=" + cid + ", title=" + title + ", writer=" + writer + ", pub=" + pub
-				+ ", price=" + price + ", status=" + status + ", date=" + date + ", adult=" + adult + ", img0=" + img0
-
-				+ ", img1=" + img1 + ", img2=" + img2 + "]";
-	}
-
+	
 }
