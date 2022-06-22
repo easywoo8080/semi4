@@ -1,27 +1,31 @@
-package com.semi4.cate;
+package com.semi4.main;
+
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.semi4.biz.CateBiz;
+import com.semi4.biz.CartBiz;
+import com.semi4.biz.MainBiz;
 import com.semi4.biz.ProductBiz;
-import com.semi4.vo.CateVO;
+import com.semi4.vo.CartVO;
 import com.semi4.vo.ProductVO;
 
 @SpringBootTest
-class CateInsertTest {
+class MainCartTest {
 	
 	@Autowired
-	CateBiz biz;
-
+	CartBiz biz;
 	@Test
 	void contextLoads() {
-		CateVO obj = new CateVO(41, "dd",0);
+		CartVO c = new CartVO("id01",7,1 );
 		try {
-			biz.register(obj);
+			biz.register(c);
+			System.out.println("Registered OK");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
+	};
+
 }
