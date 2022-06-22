@@ -21,5 +21,6 @@ public class CustVO {
 	private String birth;
 
 	
-	
 }
+
+

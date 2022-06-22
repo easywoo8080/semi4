@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
+
  <meta charset="UTF-8">
  <title>Main title here</title>
+
 </head>
 <script>
 
@@ -21,10 +23,12 @@ $(document).ready(function(){
 </script>
 
 <body>
+
 <!-- Header-->
         <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
+
                     <h1 class="display-4 fw-bolder"> shop in style</h1>
                     <p class="lead fw-normal text-white-50 mb-0">With this template</p>
                 </div>
@@ -43,7 +47,7 @@ $(document).ready(function(){
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                            
+
                                     <h5 class="fw-bolder" th:text="${p.title}" >title</h5>
                                         <div th:text="${p.writer}">writer</div>
                                     <!-- Product price-->
@@ -58,7 +62,7 @@ $(document).ready(function(){
                     </div>
                 </div>
             </div>
-            
+
         </section>
 			<nav aria-label="Page navigation example">
 			  <ul class="pagination justify-content-center">
@@ -75,6 +79,5 @@ $(document).ready(function(){
 			</nav>
 </body>
 </html>
-       
-        
+
 

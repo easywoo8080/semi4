@@ -32,13 +32,44 @@ public class CustController {
 	}
 	
 	@RequestMapping("/addimpl")
-	public String addimpl(Model m, CustVO cust, HttpSession session) {
+	public String addimpl(Model m, CustVO cust) {
 		try {
 			cbiz.register(cust);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "redirect:detail?uid="+cust.getUid();
+		try {
+			CustVO c = null;
+			c = (CustVO) cbiz.get(cust.getUid());
+			m.addAttribute("cust", c);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		m.addAttribute("center", "cust/detail");
+		return "main";
 	}
-
+	
+	@RequestMapping("/detail")
+	public String detail(Model m, String id) {
+		CustVO cust = null;
+		try {
+			cust  = cbiz.get(id);
+			m.addAttribute("cust", cust);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		m.addAttribute("center", "cust/detail");
+		return "main";
+	}
+	
+	@RequestMapping("/update")
+	public ModelAndView update(ModelAndView mv, CustVO cust) {
+		try {
+			cbiz.modify(cust);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mv;
+	}
+	
 }

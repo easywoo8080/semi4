@@ -21,7 +21,6 @@ public class CateVO {
 		this.name = name;
 	}
 
-
 	
 
 	
