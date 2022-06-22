@@ -1,50 +1,130 @@
 
+
+<!-- Page Heading -->
+<meta charset="UTF-8">
+
 <style>
-	td > img {
+	#pimg {
 		width: 50px;
 	}
 </style>
-<h1 class="h3 mb-2 text-gray-800">Cart</h1>
-<p class="mb-4"></p>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+	$(document).ready(function() {
+		$("#selectall").click(function() {
+			if($("#selectall").is(":checked")) $("input[name=selected]").prop("checked", true);
+			else $("input[name=selected]").prop("checked", false);
+		});
+		
+		$("input[name=selected]").click(function() {
+			var total = $("input[name=selected]").length;
+			var checked = $("input[name=selected]:checked").length;
+			
+			if(total != checked) $("#selectall").prop("checked", false);
+			else $("#selectall").prop("checked", true); 
+		});
+		$('#deletebtn').click(function(){
+			var c = confirm('삭제 하시겠습니까?');
+			var sArray =[];
+			 $("input[name=selected]:checked").each(function() {
+				 sArray.push($(this).val());
+			 });
+			var pcart = {
+				"crlist" : sArray
+			};
+			$.ajax({
+				url			:	"/deletecr",
+				dataType	:	"json",
+				contentType	:	"application/x-www-form-urlencoded; charset=UTF-8",
+				type		:	"post",
+				data		:	pcart,
+				success		:	function(retVal){
+					if(retVal.code == "OK") {
+						alert(retVal.message);
+					}else {
+						alert(retVal.message);
+					}
+				},
+				error		:	function(request, status, error){
+					console.log("AJAX_ERROR");
+				}
+			});
+			
+			
+			
+		})
+		
+	});
 
+
+
+
+</script>
+<div class="text-center">
+<h1 class="display-4 fw-bolder">Cart</h1>
+<p class="mb-4"></p>
+</div>
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="display-4 fw-bolder">Cart Table</h6>
+
+        <h6 class="fw-bolder">Cart Table</h6>
+
     </div>
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        
-                        <th>Image</th>
-                        <th>User</th>
-                        <th>PID</th>
-                        <th>Title</th>
-                        <th>Price</th>
-                        <th>CNT</th>
-                        <th>Writer</th>
-                        <th>Status</th>
+                        <th><input type="checkbox" id="selectall" /></th>
+                        <th>상품 사진</th>
+                        <th>상품 코드</th>
+                        <th>제목</th>
+                        <th>가격</th>
+                        <th>수량</th>
+                        <th>저자</th>
+                        <th>판매상태</th>
                     </tr>
                 </thead>
                 
                 <tbody>
                     <tr th:each="cr : ${cartlist}">
-                   
-                      
-                        <td><img th:src="@{'/img/product_img/'+${cr.img0}}"></td>
-                        <td th:text="${cr.uid}"></td>
+                   	
+                      	<td><input type="checkbox" name="selected" th:value="${cr.pid}"></td>
+                        <td><a th:href="@{product/detail(uid=${cr.uid})}">
+                        <img id="pimg" th:src="@{'/img/product_img/'+${cr.img0}}"></a></td>
                         <td th:text="${cr.pid}"></td>
                         <td th:text="${cr.title}"></td>
                         <td th:text="${cr.price}"></td>
-                        <td th:text="${cr.num}"></td>
+                        <td><select class="form-control" th:id="${cr.uid}+'num'">
+						    <option value="1">1</option>
+						    <option value="2">2</option>
+						    <option value="3">3</option>
+						    <option value="5">5</option>
+						    <option value="6">6</option>
+						    <option value="7">7</option>
+						    <option value="8">8</option>
+						    <option value="9">9</option>
+						    <option value="10">10</option>
+				 		 </select></td>
                         <td th:text="${cr.writer}"></td>
-                        <td th:text="${cr.status}"></td>
+                        <td 
+                        th:if="${cr.status} == 1"
+                        th:text="판매중"></td>
+                         <td 
+                        th:if="${cr.status} != 1"
+                        th:text="매진"></td>
                     </tr>
-                    
+                
                 </tbody>
             </table>
+            <div class="text-center">
+            <a id="orderbtn" href="#" 
+            class="btn btn-primary btn-user btn-block">
+                ORDER
+            </a>
+           <button id ="deletebtn" type="button" >DELETE</button>
+            </div>
         </div>
     </div>
 </div>
