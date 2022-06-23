@@ -9,11 +9,13 @@ var imgs = ['img/ad_img/ad01.png', 'img/ad_img/ad02.png','img/ad_img/ad03.png'];
     cnt = 0;
 
 function addCart(id) {
+
 	$.ajax({
 		url:'mainAddCart',
 		data:{'id':id},
 		success:function(data){
-			if(data == '1') {
+			alert(data);
+			if(data == '0') {
 				alert('로그인을 해해주세요');
 			}else {
 				alert('장바구니에 추가되었습니다.');
