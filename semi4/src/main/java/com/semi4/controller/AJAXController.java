@@ -53,10 +53,9 @@ public class AJAXController {
 	@RequestMapping("mainAddCart")
 	public String mainAddCart(String id, HttpSession session) {
 		String result = "";
-		
-		
+
 		if( session.getAttribute("logincust") != null ) {
-			System.out.println("세션이란?"+session.getAttribute("logincust"));
+
 			CustVO cust;
 			cust = (CustVO) session.getAttribute("logincust");
 
@@ -66,8 +65,7 @@ public class AJAXController {
 				cartbiz.getID(id);
 				
 				cartbiz.register(c);
-				
-				System.out.println("Registered OK");
+
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

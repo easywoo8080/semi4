@@ -61,6 +61,11 @@ public class CartController {
 //			return "redirect:center?sArray="+cartid;
 		}
 		cartList(m, session);
+		
+		
+		
+		
+		
 		return "redirect:/cart";
 	}
 	

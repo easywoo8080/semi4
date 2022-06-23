@@ -46,6 +46,5 @@ public class CartVO {
 		this.uid = uid;
 	}
 	
-	
-	
+
 }

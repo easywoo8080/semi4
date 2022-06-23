@@ -41,5 +41,9 @@ public class MainBiz implements Biz<Integer, ProductVO> {
 	public List<ProductVO> get() throws Exception {
 		return dao.selectall();
 	}
+	
+	public List<ProductVO> serchall(String obj) throws Exception{
+		return dao.serchall(obj);
+	}
 
 }
