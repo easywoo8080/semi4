@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-Semi4Application<semi4>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.semi4.Semi4Application",
+            "projectName": "semi4",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
