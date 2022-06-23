@@ -20,9 +20,8 @@ public class CartController {
 	@Autowired
 	CartBiz biz;
 	CustBiz cbiz;
-
-	@RequestMapping("")
-	public String center(Model m, HttpSession session) {
+	
+	public void cartList(Model m, HttpSession session) {
 		List<CartVO> list = null;
 		CustVO cust = null;
 		try {
@@ -36,11 +35,33 @@ public class CartController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	@RequestMapping("")
+	public String center(Model m, HttpSession session) {
+		cartList(m, session);
+		
 
 		m.addAttribute("center", "cart/center");
 		return "main";
 		
 
+	}
+	@RequestMapping("/delete")
+	public String delete(Model m, HttpSession session, int[] sArray) {
+		try {
+			for (int i = 0; i < sArray.length; i++) {
+				biz.remove(sArray[i]);
+			}
+			
+		
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+//			return "redirect:center?sArray="+cartid;
+		}
+		cartList(m, session);
+		return "redirect:/cart";
 	}
 	
 
