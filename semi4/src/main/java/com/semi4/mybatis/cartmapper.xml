@@ -17,6 +17,17 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INNER JOIN product p ON c.pid= p.pid
 		 where C.UID=#{uid}
 	</select>
+	<select id="selectcp" parameterType="cartVO" resultType="cartVO">
+		select cartid, c.uid, c.pid, title, price, num, writer, status, img0
+		from cart c 
+		INNER JOIN cust cu ON c.uid= cu.uid
+		INNER JOIN product p ON c.pid= p.pid
+		 where C.UID=#{uid} and C.PID=#{pid}
+	</select>
+	<update id="updateucp" parameterType="cartVO">
+		update CART set NUM=#{num} 
+		 where UID=#{uid} and  PID=#{pid}
+	</update>
 	<select id="selectall" resultType="cartVO">
 		select cartid, c.uid, c.pid, title, price, num, writer, status, img0
 		from cart c 
