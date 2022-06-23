@@ -53,7 +53,9 @@ public class AJAXController {
 	@RequestMapping("mainAddCart")
 	public String mainAddCart(String id, HttpSession session) {
 		String result = "";
+
 		if( session.getAttribute("logincust") != null ) {
+
 			CustVO cust;
 			cust = (CustVO) session.getAttribute("logincust");
 

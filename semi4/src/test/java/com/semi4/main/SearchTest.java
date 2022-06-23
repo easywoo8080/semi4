@@ -6,7 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+
 import com.semi4.biz.MainBiz;
+
 import com.semi4.vo.ProductVO;
 
 @SpringBootTest
@@ -29,6 +31,7 @@ class SearchTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 	};
 
 }
