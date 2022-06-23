@@ -45,6 +45,13 @@ public class CartVO {
 		super();
 		this.uid = uid;
 	}
-	
 
+	public CartVO(String uid, int pid) {
+		super();
+		this.uid = uid;
+		this.pid = pid;
+	}
+	
+	
+	
 }

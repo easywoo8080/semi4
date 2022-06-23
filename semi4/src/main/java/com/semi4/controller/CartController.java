@@ -20,7 +20,7 @@ public class CartController {
 	@Autowired
 	CartBiz biz;
 	CustBiz cbiz;
-
+	
 	public void cartList(Model m, HttpSession session) {
 		List<CartVO> list = null;
 		CustVO cust = null;
@@ -61,11 +61,6 @@ public class CartController {
 //			return "redirect:center?sArray="+cartid;
 		}
 		cartList(m, session);
-		
-		
-		
-		
-		
 		return "redirect:/cart";
 	}
 	

@@ -46,5 +46,10 @@ public class CartBiz implements Biz<Integer, CartVO> {
 			return dao.selectID(uid);
 	
 	}
-	
+	public CartVO getcp(CartVO v) throws Exception {
+		return dao.selectcp(v);
+	}
+	public void modifyucp(CartVO v) throws Exception {
+		dao.updateucp(v);
+	}
 }
