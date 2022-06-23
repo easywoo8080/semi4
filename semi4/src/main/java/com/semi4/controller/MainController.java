@@ -24,11 +24,16 @@ public class MainController {
 	@Autowired
 	MainBiz mainbiz;
 	
-	public void mainProduct(Model m) {
+	
+
+	@RequestMapping("/")
+	public String main(Model m) {
 		List<ProductVO> plist = null;
 		String pimgpath = Paths.get(System.getProperty("user.dir"), "src", "main","resources","static","img", "product_img").toString();
 		System.out.println("imgpath : " +  pimgpath);
-		try {	
+		try {
+			
+			
 			plist = mainbiz.get();
 			m.addAttribute("plist", plist);
 			m.addAttribute("imgpath", pimgpath);
@@ -36,11 +41,7 @@ public class MainController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
 
-	@RequestMapping("/")
-	public String main(Model m) {
-		mainProduct(m);
 		return "main";
 	}
 	
@@ -62,7 +63,6 @@ public class MainController {
 			session.invalidate();
 
 		}
-		mainProduct(m);
 		return "main";
 	}
 	
@@ -83,10 +83,7 @@ public class MainController {
 				
 		} catch (Exception e) {
 			
-		} finally {
-			mainProduct(m);
 		}
-		
         return "main";
 	}
 }

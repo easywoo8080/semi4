@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
+
  <meta charset="UTF-8">
  <title>Main title here</title>
+
 </head>
 <script>
-
 
 
 $(document).ready(function(){
@@ -18,19 +19,16 @@ $(document).ready(function(){
    });
 });
 
-function goDetail(pid){
-	var aa = '/product/detail(id=${p.pid})';
-	//alert(pid);
-	location.href='/product/detail?pid='+pid; 
-};
 
 </script>
 
 <body>
+
 <!-- Header-->
         <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
+
                     <h1 class="display-4 fw-bolder"> shop in style</h1>
                     <p class="lead fw-normal text-white-50 mb-0">With this template</p>
                 </div>
@@ -41,37 +39,30 @@ function goDetail(pid){
             <div class="container px-4 px-lg-5 mt-5">
 
                 <div class="row gx-5 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                   
                     <div class="col mb-5" th:each="p:${plist}">
                         <div class="card h-100">
                             <!-- Product image-->
-                            <!-- <a th:href="@{detail(id=${p.pid})}"> -->
-                            
-                         	<a th:onclick="'goDetail(' + ${p.pid} + ');'" >
-                            <img class="card-img-top" th:src="'img/product_img/' + ${p.img0}" style="width:400" alt="..." /></a>
-                          
+                            <img class="card-img-top" th:src="'img/product_img/' + ${p.img0}" style="width:400" alt="..." />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                            
-                                    
-                                    <h5 class="fw-bolder" th:text="${p.title}"th:href="@{detail(id=${p.title})}" >title</h5>
+
+                                    <h5 class="fw-bolder" th:text="${p.title}" >title</h5>
                                         <div th:text="${p.writer}">writer</div>
-                                      
                                     <!-- Product price-->
                                     <div th:text="${p.price}+'원'">price</div>
                                 </div>
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" th:href="'mainAddCart?id='+${p.pid}" >add cart</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" th:href="'mainAddCart?id='+${p.pid}" >Add Cart</a></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
         </section>
 			<nav aria-label="Page navigation example">
 			  <ul class="pagination justify-content-center">
@@ -88,6 +79,5 @@ function goDetail(pid){
 			</nav>
 </body>
 </html>
-       
-        
+
 

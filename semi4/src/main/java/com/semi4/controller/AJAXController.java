@@ -49,35 +49,43 @@ public class AJAXController {
 
 		return result;
 	}
-	
 	@RequestMapping("mainAddCart")
-	public String mainAddCart(String id, HttpSession session) {
-		String result = "";
-
-		if( session.getAttribute("logincust") != null ) {
-
-			CustVO cust;
-			cust = (CustVO) session.getAttribute("logincust");
-
-			CartVO c = new CartVO(cust.getUid(), Integer.parseInt(id), 1);
-			
-			try {
-				cartbiz.getID(id);
-				
-				cartbiz.register(c);
-
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			result = "1";
-			
-		} else {
-			result = "0";
-		}
-		
-		return result;
-	}
-
+	   public String mainAddCart(String id, HttpSession session) {
+	      String result = "";
+	      
+	      if( session.getAttribute("logincust") != null ) {
+	         CustVO cust;
+	         cust = (CustVO) session.getAttribute("logincust");
+	         
+	         CartVO c = new CartVO(cust.getUid(), Integer.parseInt(id), 1);
+	         CartVO cp = new CartVO(cust.getUid(), Integer.parseInt(id));
+	         try {
+	        	
+	        	 CartVO ucp = cartbiz.getcp(cp);
+	        	 if (ucp == null) {
+	        		 cartbiz.register(c);
+				} else {
+					c.setUid(ucp.getUid());
+					c.setPid(ucp.getPid());
+					c.setNum(ucp.getNum()+1);
+					cartbiz.modifyucp(c);
+				}
+	        	 
+//	        	 System.out.println(cartbiz.getcp(c.getUid(), Integer.parseInt(id)));
+	        	 
+	        	 
+	         } catch (Exception e) {
+	            e.printStackTrace();
+	         }
+	         result = "1";
+	         
+	      } else {
+	         result = "0";
+	      }
+	      
+	      return result;
+	   }
+	  
 
 
 }

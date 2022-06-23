@@ -17,5 +17,4 @@ public interface MainMapper {
 	public void update(ProductVO obj) throws Exception;
 	public ProductVO select(int obj) throws Exception;
 	public List<ProductVO> selectall() throws Exception;
-	public List<ProductVO> serchall(String obj) throws Exception;
 }

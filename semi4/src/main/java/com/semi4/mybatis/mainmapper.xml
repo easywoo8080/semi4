@@ -7,10 +7,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="selectall" resultType="productVO">
 		SELECT pid, title, writer, price, adult, img0 from product order by pid desc limit 8;
 	</select>
-	<select id="serchall" parameterType="String"  resultType="productVO">
-		select * from product where title like '%' ||  #{obj} || '%';
-	</select>
-	
+
 </mapper>
 
 
