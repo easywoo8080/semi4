@@ -79,20 +79,6 @@ public class AJAXController {
 //		
 		return result;
 	}
-	@RequestMapping(value="/deletecr", method=RequestMethod.POST)
-	@ResponseBody
-	public Object deleteCR(
-			@RequestParam(value="crlist[]") List<String> crlist
-			) {
-		for(String cart	: crlist) {
-			System.out.println(cart);
-		}
-		Map<String, Object> retVal = new HashMap<String, Object>();
-		retVal.put("code", "OK");
-		retVal.put("message", "삭제 완료");
-		
-		return retVal;
-	}
 
 
 }
