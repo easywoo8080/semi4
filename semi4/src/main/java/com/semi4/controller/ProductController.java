@@ -38,5 +38,11 @@ public class ProductController {
 		return "main";
 
 	}
+	@RequestMapping("/detail")
+	public String detail(Model m) {
+		m.addAttribute("center", "product/detail");
+		return "main";
+
+	}
 	
 }

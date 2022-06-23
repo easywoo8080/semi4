@@ -53,32 +53,35 @@ public class AJAXController {
 	@RequestMapping("mainAddCart")
 	public String mainAddCart(String id, HttpSession session) {
 		String result = "";
-//		
-//		System.out.println("id : " + id);
-//		if( session == null ) {
-//			result = "0";
-//		} else {
-//			CustVO cust;
-//			cust = (CustVO) session.getAttribute("logincust");
-//			
-//			
-//			
-//			CartVO c = new CartVO(cust.getUid(), Integer.parseInt(id), 1);
-//			
-//			try {
-//				cartbiz.getID(id);
-//				
-//				cartbiz.register(c);
-//				
-//				System.out.println("Registered OK");
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-//			result = "1";
-//		}
-//		
+		
+		
+		if( session.getAttribute("logincust") != null ) {
+			System.out.println("세션이란?"+session.getAttribute("logincust"));
+			CustVO cust;
+			cust = (CustVO) session.getAttribute("logincust");
+
+			CartVO c = new CartVO(cust.getUid(), Integer.parseInt(id), 1);
+			
+			try {
+				cartbiz.getID(id);
+				
+				cartbiz.register(c);
+				
+				System.out.println("Registered OK");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			result = "1";
+			
+		} else {
+			result = "0";
+		}
+		
 		return result;
 	}
+	
+	
+	
 	@RequestMapping(value="/deletecr", method=RequestMethod.POST)
 	@ResponseBody
 	public Object deleteCR(
