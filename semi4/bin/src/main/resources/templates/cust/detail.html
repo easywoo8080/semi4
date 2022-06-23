@@ -1,0 +1,58 @@
+<meta charset="UTF-8">
+<script>
+$(document).ready(function(){
+	$('#updatebtn').click(function(){
+		$('.user').attr({
+			'method' : 'post',
+		    'action' : 'update'
+		});
+		$('.user').submit();
+	});
+});
+</script>
+<div class="container-fluid">
+<div class="col-lg-6">
+    <div class="p-5">
+        <div class="text-center">
+            <h1 class="h4 text-gray-900 mb-4">Customer Information</h1>
+        </div>
+        <form class="user">
+            <div class="form-group">
+                <input type="text" class="form-control form-control-user"
+                    name="id" value="id01" th:value="${cust.uid}" readonly="readonly">
+            </div>
+            
+            <div class="form-group">
+                <input type="text" class="form-control form-control-user"
+                    name="pwd" value="pwd01" th:value="${cust.pwd}">
+            </div>
+            
+            <div class="form-group">
+                <input type="text" class="form-control form-control-user"
+                    name="name" value="james" th:value="${cust.name}">
+            </div>
+            
+            <div class="form-group">
+                <input type="text" class="form-control form-control-user"
+                    name="addr" value="seoul" th:value="${cust.addr}">
+            </div>
+            
+            <div class="form-group">
+                <input type="text" class="form-control form-control-user"
+                    name="phon" value="tel1" th:value="${cust.phon}">
+            </div>
+            
+            <div class="form-group">
+                <input type="text" class="form-control form-control-user"
+                    name="birth" value="1990" th:value="${cust.birth}">
+            </div>
+
+            <a id="updatebtn" href="#" class="btn btn-primary btn-user btn-block">
+                회원정보 수정
+            </a>
+            
+        </form>
+       
+    </div>
+</div>
+</div>
