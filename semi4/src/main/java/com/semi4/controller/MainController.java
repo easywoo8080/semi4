@@ -1,5 +1,6 @@
 package com.semi4.controller;
 
+import java.nio.file.Paths;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -23,20 +24,30 @@ public class MainController {
 	@Autowired
 	MainBiz mainbiz;
 	
-	String path = "테스트입니다. 여긴 컨트롤러";
+	
 
 	@RequestMapping("/")
 	public String main(Model m) {
 		List<ProductVO> plist = null;
+		String pimgpath = Paths.get(System.getProperty("user.dir"), "src", "main","resources","static","img", "product_img").toString();
+		System.out.println("imgpath : " +  pimgpath);
 		try {
+			
+			
 			plist = mainbiz.get();
 			m.addAttribute("plist", plist);
-			m.addAttribute("path", path);
+			m.addAttribute("imgpath", pimgpath);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
+		return "main";
+	}
+	
+	@RequestMapping("/addcart")
+	public String addcart(Model m) {
+		m.addAttribute("center", "center");
 		return "main";
 	}
 	
@@ -50,6 +61,7 @@ public class MainController {
 	public String logout(Model m, HttpSession session) {
 		if(session !=null) {
 			session.invalidate();
+
 		}
 		return "main";
 	}
