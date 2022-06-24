@@ -3,47 +3,54 @@ package com.semi4.biz;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.semi4.frame.Biz;
-import com.semi4.mapper.ProductMapper;
+import com.semi4.mapper.OrderMapper;
 import com.semi4.vo.OrderVO;
-import com.semi4.vo.ProductVO;
 
-public class OrderBiz implements Biz<Integer, ProductVO> {
+@Service
+public class OrderBiz implements Biz<Integer, OrderVO> {
 
 	@Autowired
-	ProductMapper dao;
+	OrderMapper dao;
 	
 	@Override
-	public void register(ProductVO v) throws Exception {
-		dao.insert(v);
+	public void register(OrderVO v) throws Exception {
+		dao.insert(v);	
 	}
 
 	@Override
-	public void modify(ProductVO v) throws Exception {
+	public void modify(OrderVO v) throws Exception {
 		dao.update(v);
 	}
-
 	@Override
 	public void remove(Integer k) throws Exception {
 		dao.delete(k);
 	}
-
 	@Override
-	public ProductVO get(Integer k) throws Exception {
+	public OrderVO get(Integer k) throws Exception {
 		return dao.select(k);
 	}
-
 	@Override
-	public List<ProductVO> get() throws Exception {
+	public List<OrderVO> get() throws Exception {
 		return dao.selectall();
 	}
-
-	public void orderInsert(OrderVO obj) throws Exception{
-		
-	}
-	public void orderDetailInsert(OrderVO obj) throws Exception{
-		
+	
+	public List<OrderVO> selectuser(OrderVO v) throws Exception{
+		return dao.selectuser(v);
 	}
 
+	public int orderregister(OrderVO v) throws Exception{
+		return dao.orderinsert(v);
+	}
+	public void orderdetailregister(OrderVO v) throws Exception{
+		dao.orderdetailinsert(v);
+	}
+
+	public List<OrderVO> selecdetail(OrderVO obj) throws Exception{
+		return dao.selecdetail(obj);
+	}
+	
+	
 }

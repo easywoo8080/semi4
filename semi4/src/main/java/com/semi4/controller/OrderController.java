@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.semi4.biz.CartBiz;
+import com.semi4.biz.OrderBiz;
 import com.semi4.vo.CartVO;
 import com.semi4.vo.CustVO;
+import com.semi4.vo.OrderVO;
 
 @Controller
 @RequestMapping("/order")
@@ -20,11 +22,31 @@ public class OrderController {
 	
 	@Autowired
 	CartBiz cartbiz;
+	
+	@Autowired
+	OrderBiz orderbiz;
 
 	@RequestMapping("")
-	public ModelAndView main(ModelAndView mv) {
-		mv.setViewName("main");
+	public ModelAndView main(ModelAndView mv, HttpSession session) {
+		
+		CustVO cust = (CustVO) session.getAttribute("logincust");
+		List<OrderVO> list = new ArrayList<OrderVO>();
+		if( cust.getUid() != null ) {
+			try {
+					
+					list = orderbiz.selectuser(new OrderVO(cust.getUid())   );
+					System.out.println(list.get(0).getDprice());
+					System.out.println("465484645454aseadf" + list.get(0).getTitle());
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+		}
+
+		mv.addObject("orderlist", list);
 		mv.addObject("center", "order/center" );
+		mv.setViewName("main");
 		return mv;
 	}
 	
@@ -55,24 +77,32 @@ public class OrderController {
 	}
 	
 	@RequestMapping("/addimpl")
-	public ModelAndView addimpl(ModelAndView mv,HttpSession session, String oname, String oaddr, String ophon, String[] pid, String[] dnum, String[] dprice) {
-		System.out.println("oname : " + oname);
-		System.out.println("oaddr : " + oaddr);
-		System.out.println("ophon : " + ophon);
-		System.out.println("pid : " + pid);
-		System.out.println("dnum : " + dnum);
-		System.out.println("dprice : " + dprice);
+	public ModelAndView addimpl(ModelAndView mv,HttpSession session, String oname, String oaddr, String ophon, int[] cartid, int[] pid, int[] dnum, int[] dprice) {
+
+		CustVO cust = (CustVO) session.getAttribute("logincust");
+		List<OrderVO> list = null;
+		if( cust.getUid() != null ) {
+			OrderVO orders = new OrderVO(cust.getUid(), oname, oaddr, ophon);
+			try {
+					orderbiz.orderregister(orders);
+					
+					
+					for (int i = 0; i < pid.length; i++) {
+						OrderVO orderdetail = new OrderVO( orders.getOid(), pid[i], dnum[i], dprice[i] );
+						orderbiz.orderdetailregister(orderdetail);
+						cartbiz.remove(cartid[i]);
+					}
+					
+					
+					list = orderbiz.selecdetail(new OrderVO(orders.getOid(), cust.getUid()));
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+		}
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		mv.addObject("orderlist", list);
 		mv.setViewName("main");
 		mv.addObject("center", "order/center" );
 		return mv;
