@@ -22,7 +22,28 @@
     <link href="/css/sb-admin-2.min.css" rel="stylesheet">
 	<link href="/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        
+       
     </head>
+    
+<script>
+
+
+
+$(document).ready(function(){
+	  $('#serchbt').click(function(){
+  			var txt = $('#serch').val();
+			location.href='/mainSerch?txt='+txt; 
+		});
+		$("#serch").keydown(function(e) {
+   			if (e.keyCode == 13) {
+   				var txt = $('#serch').val();
+   				location.href='/mainSerch?txt='+txt; 
+   				$('#serch').val() = "";
+   			}
+		});
+});
+</script>
     <body>
 
         <!-- Navigation-->
@@ -32,12 +53,14 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-    
-                        <li class="nav-item"><a class="nav-link" href="/cust">회원정보</a></li>
+
+                        <li th:if="${session.logincust == null}" class="nav-item"><a class="nav-link" href="/cust">회원 가입</a></li>
+                        <li th:unless="${session.logincust == null}" class="nav-item"><a class="nav-link" href="/cust/detail">회원 수정</a></li>
                         <li class="nav-item"><a class="nav-link" href="/product">제품목록</a></li>
                         <li class="nav-item"><a class="nav-link" href="/order">거래내역</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Search  </a></li>
-                        <input type="search" id="search" name="search"/>
+                        <li class="nav-item"><a class="nav-link" >검색</a></li>
+                        <input type="serch" id="serch" name="serch"/>
+                        <button id="serchbt">SERCH</button>
                     </ul>
 
                     <form class="d-flex" action="/cart" th:if="${session.logincust != null}">

@@ -1,17 +1,13 @@
 package com.semi4.controller;
 
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.semi4.biz.CartBiz;
@@ -27,6 +23,7 @@ public class AJAXController {
 
 	@Autowired
 	CartBiz cartbiz;
+
 	
 	@RequestMapping("checkid")
 	public String checkid(String id) {
@@ -87,7 +84,24 @@ public class AJAXController {
 	      return result;
 	   }
 
+		
+	@RequestMapping("cartNum")
+	public String cartNum(Model m, HttpSession session,  int cartid, int num) {
+		String result = "";
+		CartVO cv = null;
+		CartVO cart = new CartVO(cartid, num);
+		try {
+			cartbiz.modify(cart);
+			cv = cartbiz.get(cartid);
+			result = Integer.toString(cv.getPrice());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
+		return result;
+	}
+	
 
 }
 

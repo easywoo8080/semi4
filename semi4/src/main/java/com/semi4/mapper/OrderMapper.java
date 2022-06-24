@@ -12,9 +12,12 @@ import com.semi4.vo.OrderVO;
 @Mapper
 public interface OrderMapper {
 
-	public void insert(CartVO obj) throws Exception;
+	public void insert(OrderVO obj) throws Exception;
 	public void delete(int obj) throws Exception;
 	public void update(CartVO obj) throws Exception;
 	public OrderVO select(int obj) throws Exception;
 	public List<CartVO> selectall() throws Exception;
+	
+	public void orderInsert(OrderVO obj) throws Exception;
+	public void orderDetailInsert(OrderVO obj) throws Exception;
 }

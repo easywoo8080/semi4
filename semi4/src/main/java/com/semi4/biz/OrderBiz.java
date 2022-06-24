@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.semi4.frame.Biz;
 import com.semi4.mapper.ProductMapper;
+import com.semi4.vo.OrderVO;
 import com.semi4.vo.ProductVO;
 
 public class OrderBiz implements Biz<Integer, ProductVO> {
@@ -38,6 +39,11 @@ public class OrderBiz implements Biz<Integer, ProductVO> {
 		return dao.selectall();
 	}
 
-
+	public void orderInsert(OrderVO obj) throws Exception{
+		
+	}
+	public void orderDetailInsert(OrderVO obj) throws Exception{
+		
+	}
 
 }

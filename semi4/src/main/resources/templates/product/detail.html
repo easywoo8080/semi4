@@ -155,8 +155,8 @@
     </div>
 
     <div th:each="p:${dp}" class="text-center">
-        <img th:if="${not #strings.isEmpty(dp.img1)}" th:src="${dp.img1}" class="rounded mgb-15" width="800">
-        <img th:if="${not #strings.isEmpty(dp.img2)}" th:src="${dp.img2}" class="rounded mgb-15" width="800">
+        <img th:if="${not #strings.isEmpty(dp.img1)}" th:src="'/img/product_img/' +${dp.img1}" class="rounded mgb-15" width="800">
+        <img th:if="${not #strings.isEmpty(dp.img2)}" th:src="'/img/product_img/' +${dp.img2}" class="rounded mgb-15" width="800">
     </div>
 
 </div>

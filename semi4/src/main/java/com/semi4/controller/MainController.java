@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.semi4.biz.CustBiz;
 import com.semi4.biz.MainBiz;
+import com.semi4.biz.SerchBiz;
 import com.semi4.vo.CustVO;
 import com.semi4.vo.ProductVO;
 
@@ -23,6 +24,8 @@ public class MainController {
 	
 	@Autowired
 	MainBiz mainbiz;
+	@Autowired
+	SerchBiz serchbiz;
 	
 	public void mainProduct(Model m) {
 		List<ProductVO> plist = null;
@@ -43,6 +46,26 @@ public class MainController {
 		mainProduct(m);
 		return "main";
 	}
+	
+	@RequestMapping("mainSerch")
+	   public String mainSerch(Model m, HttpSession session, String txt ) {
+
+	      try {
+			List<ProductVO> list = serchbiz.getTitle(txt);
+			m.addAttribute("plist", list);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	      
+	      m.addAttribute("center", "serch/center");
+	      return "main";
+	   }
+
+	
+	
+	
+	
 	
 	@RequestMapping("/addcart")
 	public String addcart(Model m) {

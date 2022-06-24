@@ -6,24 +6,7 @@
 </head>
 <script>
 
-function addCart(id) {
-
-	$.ajax({
-		url:'mainAddCart',
-		data:{'id':id},
-		success:function(data){
-			if(data == '0') {
-				alert('로그인을 해해주세요');
-			}else {
-				alert('장바구니에 추가되었습니다.');
-			}
-		}
-	});
-};
-
-
 function goDetail(pid){
-
 	location.href='/product/detail?pid='+pid; 
 };
 
@@ -32,6 +15,7 @@ function goDetail(pid){
 <body>
 <!-- Header-->
 
+       
         <Section>
             <div class="container px-4 px-lg-5 mt-5">
 
@@ -60,7 +44,7 @@ function goDetail(pid){
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" th:onclick="'addCart(' + ${p.pid} + ');'" >add cart</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" th:href="'mainAddCart?id='+${p.pid}" >add cart</a></div>
                             </div>
                         </div>
                     </div>

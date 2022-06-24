@@ -6,19 +6,21 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.semi4.biz.SerchBiz;
+
+import com.semi4.biz.MainBiz;
+
 import com.semi4.vo.ProductVO;
 
 @SpringBootTest
-class SearchTest {
+class SearchTestmapper {
 	
 	@Autowired
-	SerchBiz biz;
+	MainBiz biz;
 	@Test
 	void contextLoads() {
 		List<ProductVO> list = null;
 		try {
-			list = biz.getTitle("일");
+			list = biz.serchall("일지");
 			if(list.size() != 0) {
 				System.out.println(list);
 				System.out.println("일지정보");
