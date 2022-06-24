@@ -10,6 +10,24 @@
 </style>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.js"></script>
     <script type="text/javascript">
+
+    
+	 function mody(cartid){
+		var num = $('#num'+cartid).val();
+
+		$.ajax({
+			url:'cartNum',
+			data:{
+			'cartid': cartid,
+			'num' : num
+			},
+			success:function(data){
+					$('#price'+cartid).text(data*num);
+				}
+			});
+
+	 };   
+    
 	$(document).ready(function() {
 		$("#selectall").click(function() {
 			if($("#selectall").is(":checked")) $("input[name=selected]").prop("checked", true);
@@ -29,15 +47,24 @@
 			 $("input[name=selected]:checked").each(function(i) {
 				 sArray.push($(this).val());
 			 });
-			var pcart = {
-				"crlist" : sArray
-			};
+		
 			
 			if(c == true){
 				location.href='/cart/delete?sArray='+sArray;
 			}
 		})
 		
+		$('#orderbtn').click(function(){
+
+			var sArray =[];
+			 $("input[name=selected]:checked").each(function(i) {
+				 sArray.push($(this).val());
+			 });
+			location.href='/order/add?sArray='+sArray;
+
+		})
+		
+	
 		
 	});
 
@@ -73,15 +100,16 @@
                 </thead>
                 
                 <tbody>
-                    <tr th:each="cr : ${cartlist}">
-                   	
+                    <tr th:each="cr: ${cartlist}">
+                 
                       	<td><input type="checkbox" name="selected" th:value="${cr.cartid}"></td>
-                        <td><a th:href="@{product/detail(uid=${cr.uid})}">
+                        <td><a th:href="@{product/detail(pid=${cr.pid})}">
                         <img id="pimg" th:src="@{'/img/product_img/'+${cr.img0}}"></a></td>
-                        <td th:text="${cr.pid}"></td>
+                        <td  th:text="${cr.pid}"></td>
                         <td th:text="${cr.title}"></td>
-                        <td th:text="${cr.price}"></td>
-                        <td><input th:value="${cr.num}"></input></td>
+                        <td th:id="'price'+${cr.cartid}" th:text="${cr.price}*${cr.num}"></td>
+                        <td><input  type="number" th:id="'num'+${cr.cartid}" th:value="${cr.num}"></input><button th:onclick="'mody('+${cr.cartid}+');'">수정</button></td>
+
                         <td th:text="${cr.writer}"></td>
                         <td 
                         th:if="${cr.status} == 1"

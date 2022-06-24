@@ -19,7 +19,6 @@ import com.semi4.vo.CustVO;
 public class CartController {
 	@Autowired
 	CartBiz biz;
-	CustBiz cbiz;
 	
 	public void cartList(Model m, HttpSession session) {
 		List<CartVO> list = null;
@@ -27,7 +26,7 @@ public class CartController {
 		try {
 			cust = (CustVO) session.getAttribute("logincust");
 			
-
+			
 			list= biz.getID(cust.getUid());
 			m.addAttribute("cartlist", list);
 

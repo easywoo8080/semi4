@@ -46,6 +46,38 @@ public class OrderVO {
 		this.odate = odate;
 		this.ostatus = ostatus;
 	}
+
+
+	public OrderVO(String uid, String oname, String oaddr, String ophon, Date odate, int ostatus) {
+		super();
+		this.uid = uid;
+		this.oname = oname;
+		this.oaddr = oaddr;
+		this.ophon = ophon;
+		this.odate = odate;
+		this.ostatus = ostatus;
+	}
+
+
+	public OrderVO(String oname, String oaddr, String ophon, int dnum, double dprice) {
+		super();
+		this.oname = oname;
+		this.oaddr = oaddr;
+		this.ophon = ophon;
+		this.dnum = dnum;
+		this.dprice = dprice;
+	}
+
+
+	public OrderVO(int pid, int dnum, double dprice) {
+		super();
+		this.pid = pid;
+		this.dnum = dnum;
+		this.dprice = dprice;
+	}
+
+
+
 	
 	
 }

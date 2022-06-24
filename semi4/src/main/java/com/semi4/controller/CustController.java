@@ -49,11 +49,13 @@ public class CustController {
 		return "main";
 	}
 	
+	
 	@RequestMapping("/detail")
-	public String detail(Model m, String id) {
-		CustVO cust = null;
+	public String detail(Model m, HttpSession session) {
+		CustVO cust = (CustVO) session.getAttribute("logincust");
+		
 		try {
-			cust  = cbiz.get(id);
+			cust  = cbiz.get(cust.getUid());
 			m.addAttribute("cust", cust);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -63,13 +65,17 @@ public class CustController {
 	}
 	
 	@RequestMapping("/update")
-	public ModelAndView update(ModelAndView mv, CustVO cust) {
+	public String update(Model m, CustVO cust) {
+		System.out.println("나와"+cust.getUid());
 		try {
-			cbiz.modify(cust);
+			cbiz.modify(cust);	
+			cust  = cbiz.get(cust.getUid());
+			m.addAttribute("cust", cust);		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return mv;
+		m.addAttribute("center", "cust/detail");
+		return "main";
 	}
-	
+
 }
