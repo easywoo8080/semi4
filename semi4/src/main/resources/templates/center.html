@@ -40,6 +40,8 @@ function addCart(id) {
 		}
 	});
 };
+
+
 function leftclick(){
         var str = $('#imageAd').attr('src');
         str = str.substr(14, 1);
@@ -101,10 +103,11 @@ $(document).ready(function(){
             <div id="s1" class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
                 	<img class="card-img-top" id="imageAd" src="img/ad_img/ad01.png">
+                	<!-- Header
                 	<button id="leftAd" class="btn btn-primary btn-user btn-block">◀</button>
 					<button id="autoAd" class="btn btn-primary btn-user btn-block">Auto</button>
 					<button id="stopAd" class="btn btn-primary btn-user btn-block">Stop</button>
-					<button id="rightAd" class="btn btn-primary btn-user btn-block">▶</button>
+					<button id="rightAd" class="btn btn-primary btn-user btn-block">▶</button>-->
                 </div>
             </div>
         </header>
@@ -130,7 +133,7 @@ $(document).ready(function(){
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-primary btn-user btn-block" th:onclick="'addCart(' + ${p.pid} + ');'">Add Cart</a></div>
+                                <div class="text-center"><a class="btn btn-primary btn-user btn-block" th:onclick="'addCart(' + ${p.pid} + ');'" >Add Cart</a></div>
                             </div>
                         </div>
                     </div>
