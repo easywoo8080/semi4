@@ -35,6 +35,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INNER JOIN product p ON c.pid= p.pid
 		order by cartid asc
 	</select>
+	<select id="cartcnt" parameterType="cartVO" resultType="int">
+		Select count(cartid) from cart where UID=#{uid}
+	</select>
 	<insert id="insert" parameterType="cartVO">
 		INSERT INTO CART VALUES (NULL,#{uid},#{pid},#{num})
 	</insert>

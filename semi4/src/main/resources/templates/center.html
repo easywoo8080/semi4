@@ -1,5 +1,14 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<style>
+#leftAd, #autoAd, #stopAd, #rightAd {
+	font-family: 'Jua', sans-serif;
+}
+#c1 {
+	font-family: 'Jua', sans-serif;
+}
+</style>
+
 <head>
 <meta charset="UTF-8">
 <title>Main title here</title>
@@ -86,25 +95,24 @@ $(document).ready(function(){
 </script>
 
 <body>
-<button id="leftAd">Left</button>
+<div>
 
-
-<button id="autoAd">Auto</button>
-<button id="stopAd">Stop</button>
-
-
-<button id="rightAd">Right</button>
+</div>
 <!-- Header-->
         <header class="bg-white py-5">
-            <div class="container px-4 px-lg-5 my-5">
+            <div id="s1" class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
                 	<img class="card-img-top" id="imageAd" src="img/ad_img/ad01.png">
+                	<button id="leftAd" class="btn btn-primary btn-user btn-block">◀</button>
+					<button id="autoAd" class="btn btn-primary btn-user btn-block">Auto</button>
+					<button id="stopAd" class="btn btn-primary btn-user btn-block">Stop</button>
+					<button id="rightAd" class="btn btn-primary btn-user btn-block">▶</button>
                 </div>
             </div>
         </header>
         <!-- Section-->
 
-        <section class="py-5">
+        <section id="c1" class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
                 <div class="row gx-5 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                     <div class="col mb-5" th:each="p:${plist}">
@@ -124,7 +132,7 @@ $(document).ready(function(){
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" th:onclick="'addCart(' + ${p.pid} + ');'">Add Cart</a></div>
+                                <div class="text-center"><a class="btn btn-primary btn-user btn-block" th:onclick="'addCart(' + ${p.pid} + ');'">Add Cart</a></div>
                             </div>
                         </div>
                     </div>

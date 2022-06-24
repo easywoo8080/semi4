@@ -1,5 +1,11 @@
 <meta charset="UTF-8">
 <style>
+   #pf{
+   		font-family: 'Pacifico', cursive;
+		font-size: x-large;
+		color: blue;
+   }
+   
     .container-fluid {
     display: flex;
       justify-content: center;
@@ -21,7 +27,7 @@ $(document).ready(function(){
     <div class="col-lg-6">
     <div class="p-5">
     <div class="text-center">
-         <h1 class="h4 text-gray-900 mb-4">프로필</h1>
+         <h1 id="pf" class="h4 text-gray-900 mb-4">Profile</h1>
      </div>
      
         <form class="user">
@@ -55,7 +61,7 @@ $(document).ready(function(){
                     name="birth" value="1990" th:value="${cust.birth}">
             </div>     
         </form>
-       <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">회원정보수정</button>
+       <button type="button" class="btn btn-primary btn-user btn-block" data-toggle="modal" data-target="#myModal">회원정보수정</button>
     </div>
 </div>
 </div>

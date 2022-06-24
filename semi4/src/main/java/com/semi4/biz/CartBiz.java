@@ -52,4 +52,7 @@ public class CartBiz implements Biz<Integer, CartVO> {
 	public void modifyucp(CartVO v) throws Exception {
 		dao.updateucp(v);
 	}
+	public void getcnt(Integer k) throws Exception {
+		dao.cartcnt(k);
+	};
 }
