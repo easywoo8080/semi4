@@ -40,7 +40,10 @@ public class SerchBiz implements SerchBizFrame<String, ProductVO> {
 		return dao.pub(k);
 	}
 	
-	
+	public List<ProductVO> getCid(Integer k) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.cid(k);
+	}
 
 
 }

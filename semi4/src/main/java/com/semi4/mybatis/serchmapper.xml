@@ -13,11 +13,15 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 	<select id="write" parameterType="String"  resultType="productVO">
 		select pid, c.name, title, writer, pub, price, status, date,adult, img0,img1,img2 from product p
-		inner join cate c ON c.cid = p.cid where write title like CONCAT('%',#{keyword},'%')
+		inner join cate c ON c.cid = p.cid where write like CONCAT('%',#{keyword},'%')
 	</select>
 	<select id="pub" parameterType="String"  resultType="productVO">
 		select pid, c.name, title, writer, pub, price, status, date,adult, img0,img1,img2 from product p
-		inner join cate c ON c.cid = p.cid where pub title like CONCAT('%',#{keyword},'%')
+		inner join cate c ON c.cid = p.cid where pub like CONCAT('%',#{keyword},'%')
+	</select>
+	<select id="cid" parameterType="int"  resultType="productVO">
+		select pid, c.name, title, writer, pub, price, status, date,adult, img0,img1,img2 from product p
+		inner join cate c ON c.cid = p.cid WHERE p.cid = #{cid}
 	</select>
 </mapper>
 

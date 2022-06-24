@@ -15,4 +15,6 @@ public interface SerchMapper {
 	public List<ProductVO> title(String obj) throws Exception;
 	public List<ProductVO> write(String obj) throws Exception;
 	public List<ProductVO> pub(String obj) throws Exception;
+	public List<ProductVO> cid(Integer obj) throws Exception;
+	
 }
