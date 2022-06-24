@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
-import com.semi4.vo.CartVO;
 import com.semi4.vo.OrderVO;
 
 @Repository
@@ -14,10 +13,13 @@ public interface OrderMapper {
 
 	public void insert(OrderVO obj) throws Exception;
 	public void delete(int obj) throws Exception;
-	public void update(CartVO obj) throws Exception;
+	public void update(OrderVO obj) throws Exception;
 	public OrderVO select(int obj) throws Exception;
-	public List<CartVO> selectall() throws Exception;
+	public List<OrderVO> selectall() throws Exception;
 	
-	public void orderInsert(OrderVO obj) throws Exception;
-	public void orderDetailInsert(OrderVO obj) throws Exception;
+	public List<OrderVO> selectuser(OrderVO obj) throws Exception;
+	public List<OrderVO> selecdetail(OrderVO obj) throws Exception;
+	public int orderinsert(OrderVO obj) throws Exception;
+	public void orderdetailinsert(OrderVO obj) throws Exception;
+	
 }

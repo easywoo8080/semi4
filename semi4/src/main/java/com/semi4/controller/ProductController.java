@@ -33,16 +33,18 @@ public class ProductController {
 
 	@RequestMapping("")
 	public String main(Model m) {
-		List<ProductVO> plist = null;
-		try {
-			plist = productbiz.get();
-			m.addAttribute("plist", plist);
-			//m.addAttribute("path", path);
-			m.addAttribute("center", "product/center");
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			List<ProductVO> plist = null;
+			try {
+				plist = productbiz.get();
+				m.addAttribute("plist", plist);
+				//m.addAttribute("path", path);
+				m.addAttribute("center", "product/center");
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			m.addAttribute("left", "product/left");
+		
 		
 		return "main";
 	}
@@ -51,7 +53,6 @@ public class ProductController {
 
 		ProductVO obj = null;
 		List<CateVO> list = null;
-		//System.out.println("ddssdfsadssdfasasddsfa"+id);
 		try {
 			list = catebiz.get();
 			m.addAttribute("clist", list);
