@@ -137,7 +137,6 @@
                 <h3 name="totalPrice" id="totalPrice" class="font-weight-bold"></h3>
             </div>
             <div th:if="${dp.status == 1}" class="text-right">
-                <button type="button" class="btn btn-light border border-primary btn-lg" onclick="addCart()">장바구니 담기</button>
                 <button type="button" class="btn btn-light border border-primary btn-lg" th:onclick="'addCart(' + ${{dp.pid} + ');'">장바구니 담기</button>
                 <!-- <button type="button" class="btn btn-primary btn-lg" onclick="order()">주문하기</button> -->
             </div>
