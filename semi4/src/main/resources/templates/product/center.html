@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<style>
+#p1 {
+	font-family: 'Black Han Sans', sans-serif;
+}
+</style>
 <head>
  <meta charset="UTF-8">
  <title>Main title here</title>
@@ -40,8 +45,10 @@ function goDetail(pid){
 <!-- Header-->
 
         <Section>
-        <div class="leftcate" th:insert="${left} ? ${left} : left"> </div>
-            <div class="container px-4 px-lg-5 mt-5">
+
+            <div  class="container px-4 px-lg-5 mt-5">
+
+
                 <div class="row gx-5 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                     <div class="col mb-5" th:each="p:${plist}">
                         <div class="card h-100">
@@ -61,12 +68,12 @@ function goDetail(pid){
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" th:onclick="'addCart(' + ${p.pid} + ');'" >add cart</a></div>
+                                <div class="text-center"><a class="btn btn-primary btn-user btn-block" th:onclick="'addCart(' + ${p.pid} + ');'" >add cart</a></div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+
             
         </section>
 			<nav aria-label="Page navigation example">
