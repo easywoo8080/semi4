@@ -78,8 +78,6 @@ $(document).ready(function(){
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div  style="border: 0px solid white; text-align: center; width: 75%;" class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul  id="s1" class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-
-                        
                         <li th:if="${session.logincust == null}" class="nav-item"><a class="nav-link" href="/cust">회원 가입</a></li>
                         <li th:unless="${session.logincust == null}" class="nav-item"><a class="nav-link" href="/cust/detail">회원 수정</a></li>
                         <li class="nav-item"><a class="nav-link" href="/product">제품목록</a></li>
@@ -87,7 +85,6 @@ $(document).ready(function(){
                         <li class="nav-item"><a class="nav-link" >검색</a></li>
                          <input type="serch" id="serch" name="serch"/>
                         <button id="serchbt" class="btn btn-primary btn-user btn-block">SEARCH</button>
-                        
                     </ul>
                    
                    </div>

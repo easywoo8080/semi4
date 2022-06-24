@@ -9,83 +9,7 @@
 button {
 	font-family: 'Black Han Sans', sans-serif;
 }
-
-</style>
-<head>
-  <!--   <meta name="_csrf" th:content="${_csrf.token}"/>
-    <meta name="_csrf_header" th:content="${_csrf.headerName}"/> -->
-            <meta charset="utf-8" />
-            
-
-</head>
-
-<!-- 사용자 스크립트 추가 -->
-<th:block layout:fragment="script">
-    <script th:inline="javascript">
-        $(document).ready(function(){
-
-            calculateToalPrice();
-
-            $("#count").change( function(){
-                calculateToalPrice();
-            });
-        });
-
-        function calculateToalPrice(){
-            var count = $("#count").val();
-            var price = $("#price").val();
-            var totalPrice = price*count;
-            $("#totalPrice").html(totalPrice + '원');
-        }
-
-       
-        function addCart(){
-            var token = $("meta[name='_csrf']").attr("content");
-            var header = $("meta[name='_csrf_header']").attr("content");
-
-            var url = "/cart";
-            var paramData = {
-                pid : $("#pid").val(),
-                count : $("#count").val()
-            };
-
-            var param = JSON.stringify(paramData);
-
-            $.ajax({
-                url      : url,
-                type     : "POST",
-                contentType : "application/json",
-                data     : param,
-                beforeSend : function(xhr){
-                    /* 데이터를 전송하기 전에 헤더에 csrf값을 설정 */
-                    xhr.setRequestHeader(header, token);
-                },
-                dataType : "json",
-                cache   : false,
-                success  : function(result, status){
-                    alert("상품을 장바구니에 담았습니다.");
-                    location.href='/';
-                },
-                error : function(jqXHR, status, error){
-
-                    if(jqXHR.status == '401'){
-                        alert('로그인 후 이용해주세요');
-                        location.href='/login';
-                    } else{
-                        alert(jqXHR.responseText);
-                    }
-
-                }
-            });
-        }
-
-    </script>
-</th:block>
-
-<!-- 사용자 CSS 추가 -->
-<th:block layout:fragment="css">
-    <style>
-        .mgb-15{
+.mgb-15{
             margin-bottom:15px;
         }
         .mgt-30{
@@ -107,8 +31,34 @@ button {
             height:auto;
             width:50%;
         }
-    </style>
-</th:block>
+
+</style>
+<head>
+  <!--   <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/> -->
+            <meta charset="utf-8" />
+            
+
+</head>
+<script>
+
+function addCart(id) {
+	$.ajax({
+		url:'/mainAddCart',
+		data:{'id':id},
+		success:function(data){
+			if(data == '0') {
+				alert('로그인을 해해주세요');
+			}else {
+				alert('장바구니에 추가되었습니다.');
+			}
+		}
+	});
+};
+
+
+
+</script>
 
 <div layout:fragment="content" style="margin-left:25%;margin-right:25%">
 
@@ -148,7 +98,7 @@ button {
             </div>
             <div th:if="${dp.status == 1}" class="text-right">
 
-                <button  type="button" class="btn btn-primary btn-user btn-block" onclick="addCart()">장바구니 담기</button>
+                <button  type="button" class="btn btn-primary btn-user btn-block" th:onclick="'addCart(' + ${dp.pid} + ');'"      >장바구니 담기</button>
 
                 <!-- <button type="button" class="btn btn-primary btn-lg" onclick="order()">주문하기</button> -->
             </div>

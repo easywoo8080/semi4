@@ -1,8 +1,6 @@
 package com.semi4.controller;
 
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,7 +56,6 @@ public class AJAXController {
 	         CartVO c = new CartVO(cust.getUid(), Integer.parseInt(id), 1);
 	         CartVO cp = new CartVO(cust.getUid(), Integer.parseInt(id));
 	         try {
-	        	
 	        	 CartVO ucp = cartbiz.getcp(cp);
 	        	 if (ucp == null) {
 	        		 cartbiz.register(c);
@@ -68,10 +65,6 @@ public class AJAXController {
 					c.setNum(ucp.getNum()+1);
 					cartbiz.modifyucp(c);
 				}
-	        	 
-//	        	 System.out.println(cartbiz.getcp(c.getUid(), Integer.parseInt(id)));
-	        	 
-	        	 
 	         } catch (Exception e) {
 	            e.printStackTrace();
 	         }
@@ -80,10 +73,9 @@ public class AJAXController {
 	      } else {
 	         result = "0";
 	      }
-	      
 	      return result;
 	   }
-
+	
 		
 	@RequestMapping("cartNum")
 	public String cartNum(Model m, HttpSession session,  int cartid, int num) {

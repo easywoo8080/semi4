@@ -17,12 +17,12 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="selecdetail" resultType="orderVO">
 		select o.oid, o.uid, o.oname, o.oaddr, o.ophon, o.odate, o.ostatus, d.pid, d.dnum, d.dprice, p.title, p.writer, p.pub, p.img0 
 		from orders o, orderdetail d, product p 
-		WHERE o.oid = d.oid and d.pid = p.pid and o.oid = #{oid} and o.uid = #{uid};
+		WHERE o.oid = d.oid and d.pid = p.pid and o.oid = #{oid} and o.uid = #{uid} order by odate, oid desc;
 	</select>
 	<select id="selectuser" resultType="orderVO">
 		select o.oid, o.uid, o.oname, o.oaddr, o.ophon, o.odate, o.ostatus, d.pid, d.dnum, d.dprice, p.title, p.writer, p.pub, p.img0 
 		from orders o, orderdetail d, product p 
-		WHERE o.oid = d.oid and d.pid = p.pid and o.uid = #{uid};
+		WHERE o.oid = d.oid and d.pid = p.pid and o.uid = #{uid} order by odate, oid desc;
 	</select>
 	
 </mapper>
