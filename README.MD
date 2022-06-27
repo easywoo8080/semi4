@@ -13,10 +13,42 @@
 강주성 : 제품목록, 상세 제품목록, 제품목록에서 장바구니 담기, ppt 및 발표
 ---
 
-# 스케줄(09:00 ~ 18:00) 8th
+# 개발환경
+
+## 툴
+
+- Eclipse IDE for Enterprise Java and Web Developers - 2022-03
+- MySQL Workbench 8.0CE
+
+# 언어
+
+- Java 8
+- thymeleaf
+- JavaScript ( jQuery, Ajax )
+
+## 프레임 워크
+
+- Spring Boot Maven
+- MyBatis 2.2.2
+- BootStrap
+
+# 데이터베이스
+
+- MySQL 8.0.29-0ubuntu0.22.04.2
+- Ubuntu 22.04 LTS 22.04
+
+# 기타
+
+
+
+# 스케줄(09:00 ~ 18:00) 1day 8th
 
 ![문성용.jpg](README/moon.jpg)
 
 ![정세연_배기진.jpg](README/jb.jpg)
 
 ![강주성.jpg](README/kang.jpg)
+
+
+# ERD 설계
+![erd.png](README/erd.png)
