@@ -61,6 +61,8 @@ public class MainController {
 	      m.addAttribute("center", "serch/center");
 	      return "main";
 	   }
+	
+
 
 	
 	
